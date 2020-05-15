@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sawsquarenoise_-_06_-_Towel_Defence_Jingle_Loose.ogg-24984da96413cdb334454122f9df16e5.oggstr"
+
+[deps]
+
+source_file="res://assets/SpaceAsteroidArcadeShooterAssets/assets/audio/music/sawsquarenoise_-_06_-_Towel_Defence_Jingle_Loose.ogg"
+dest_files=[ "res://.import/sawsquarenoise_-_06_-_Towel_Defence_Jingle_Loose.ogg-24984da96413cdb334454122f9df16e5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
