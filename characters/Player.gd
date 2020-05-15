@@ -3,6 +3,9 @@ extends KinematicBody2D
 const SPEED := 600
 signal laser_shoot
 signal player_died
+signal player_add_shield
+signal player_remove_shield
+var has_shield := false
 
 var player_explosion_scene = load("res://objects/ParticlesPlayerExplosion.tscn")
 
@@ -40,4 +43,16 @@ func explode():
 
 func _on_Hitbox_body_entered(body: Node) -> void:
 	if (!self.is_queued_for_deletion() && body.is_in_group("asteroids")):
-		explode()
+		if (has_shield):
+			body.explode()
+			_remove_player_shield()
+		else:
+			explode()
+
+func _remove_player_shield() -> void:
+	emit_signal("player_remove_shield")
+	has_shield = false
+
+func add_player_shield() -> void:
+	emit_signal("player_add_shield")
+	has_shield = true

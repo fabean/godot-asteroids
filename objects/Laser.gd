@@ -14,5 +14,10 @@ func _on_VisibilityNotifier2D_viewport_exited(viewport) -> void:
 func _on_Laser_body_shape_entered(body_id, body, body_shape, area_shape):
 	if (!self.is_queued_for_deletion() && body.is_in_group("asteroids")):
 		body.call_deferred("explode")
-		get_parent().remove_child(self)
+		#get_parent().remove_child(self)
+		queue_free()
+	if (!self.is_queued_for_deletion() && body.is_in_group("powerups")):
+		print('hit shield')
+		body.call_deferred("explode")
+		#get_parent().r
 		queue_free()

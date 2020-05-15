@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func _spawn_asteroid():
 	var asteroid = asteroid_scene.instance()
+	#asteroid.sprite.random_asteroid()
 	_set_asteroid_position(asteroid)
 	_set_asteroid_trajectory(asteroid)
 	add_child(asteroid)

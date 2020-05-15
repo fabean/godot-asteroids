@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/SpaceAsteroidArcadeShooterAssets/assets/images/ships/playerShip1_blue.png" type="Texture" id=1]
 [ext_resource path="res://characters/Player.gd" type="Script" id=2]
 [ext_resource path="res://common/Wraparound.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/LaserWeapon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/PlayerSprite.gd" type="Script" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( -47, 25, -50, -5, -8, -37, 8, -37, 50, -5, 47, 25, 0, 35 )
@@ -12,8 +13,9 @@ points = PoolVector2Array( -47, 25, -50, -5, -8, -37, 8, -37, 50, -5, 47, 25, 0,
 scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="PlayerSprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -26,4 +28,6 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 1 )
+[connection signal="player_add_shield" from="." to="PlayerSprite" method="_on_Player_player_add_shield"]
+[connection signal="player_remove_shield" from="." to="PlayerSprite" method="_on_Player_player_remove_shield"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
